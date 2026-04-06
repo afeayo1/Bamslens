@@ -1,159 +1,313 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Bamilk Lens </title>
-    <link rel="stylesheet" href="style.css">
-    <script defer src="script.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BamilkLens Conference 2026</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+body {
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+/* HERO BG */
+.hero-bg {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)),
+    url('https://res.cloudinary.com/dlvurzdlr/image/upload/v1775441154/WhatsApp_Image_2026-04-02_at_7.39.56_PM_gyxz0q.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+/* GALLERY SLIDER */
+.slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 16px;
+}
+
+.slider img {
+    scroll-snap-align: center;
+    border-radius: 12px;
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+}
+
+#price{
+  align-items: center;
+  padding-right: 20px;
+
+
+}
+
+</style>
 </head>
-<body>
 
-    <!-- Navbar -->
-    <header>
-        <div class="logo"> Bamilk Lens </div>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="/index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <!--<li><a href="#testimonials">Testimonials</a></li>-->
-                <li><a href="/contact.html">Contact</a></li>
-            </ul>
-            <button class="menu-toggle"><i class="fas fa-bars"></i></button>
-        </nav>
-    </header>
+<body class="bg-gray-950 text-white">
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Welcome to Bamilk Lens & Multimedia</h1>
-            <p>Where Stories Come to Life.</p>
-            <a href="https://wa.me/2347065950181?text=Hello!%20I%20need%20assistance." class="btn">Book a Session</a>
-        </div>
-    </section>
+<!-- NAV -->
+<header class="flex justify-between items-center p-4 bg-black/50 backdrop-blur-md fixed w-full z-50">
+    <h1 class="font-bold text-lg">BamilkLens</h1>
+    <a href="/register.html" class="bg-blue-500 px-4 py-2 rounded">Register</a>
+</header>
 
-    <section id="services">
-        <h2>Our Services</h2>
-        <div class="services-container">
-            <div class="service">
-                <i class="fas fa-camera-retro"></i>
-                <h3>Videography & Photography</h3>
-                <p> From weddings and corporate events to brand commercials, we deliver visually stunning content.</p>
-            </div>
-            <div class="service">
-                <i class="fas fa-radio"></i>
-                <h3>Content Creation</h3>
-                <p>From Video Ads & Commercials to Social Media Video Content, Motion Graphics & Animation tailored to your brand</p>
-            </div>
-            <div class="service">
-                <i class="fas fa-calendar-check"></i>
-                <h3>Social Media Management</h3>
-                <p>Account Setup & Optimization<br>Content Planning & Strategy<br>Engagement Growth</p>
-            </div> <!-- ✅ Correctly Closed This Div -->
-            <div class="service">
-                <i class="fas fa-laptop"></i>
-                <h3>Digital Marketing</h3>
-                <p>Social Media Ads<br>SEO <br>Brand Positioning</p>
-            </div>
-            <div class="service">
-                <i class="fas fa-users"></i>
-                <h3> Training & Workshops </h3>
-                <p>✅ Mobile Videography Masterclass<br>✅ Content Creation for Business Growth<br>✅ Social Media Monetization<br>✅ Photography & Video Editing</p> 
-            </div>
-        </div>
-    </section>
-    <!-- Content Creation Flyer and Register Section -->
-<section id="content-creation">
-    <div class="flyer-container">
-        <img src="./images/afa15960-99bf-442a-8e68-d078745797e8.jpg" alt="Content Creation Flyer" class="flyer-image">
-        <div class="flyer-info">
-            <h2>Join Our Content Creation Masterclass!</h2>
-            <p>Learn the latest techniques in content creation and take your brand to the next level.</p>
-            <a href="register.html" class="btn">Register Now</a> <!-- Link to your registration page -->
-        </div>
-    </div>
-</section>
+<!-- HERO -->
+<section class="hero-bg min-h-screen flex flex-col justify-center items-center text-center px-4">
 
-    
+    <h1 class="text-4xl md:text-6xl font-bold mb-4">
+        Content Creation Conference 2.0
+    </h1>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio">
-        <h2>Our Work</h2>
-        <div class="gallery">
-            <img src="/images/IMG_5351.JPG" alt="Wedding">
-            <img src="/images/IMG_6672.JPG" alt="Portrait">
-            <img src="/images/OAPL2814.jpg" alt="Event">
-        </div>
-    </section>
+    <p class="text-xl text-gray-300 mb-6">
+        June 16th, 2026 • Oriental Hotel
+    </p>
 
-<!-- Testimonial Section -->
-<section id="testimonials">
-    <div class="testimonial-slider">
-        <h2>What Our Clients Say</h2>
-        <div class="testimonial-container">
-            <div class="testimonial active">
-                <img src="/images/WhatsApp Image 2025-01-31 at 17.53.20_925632ca.jpg" alt="User 1" class="profile-pic">
-                <p class="name">Tolu A </p>
-               <!--- <p class="role">Designer</p>-->
-                <p class="text">"This service is amazing! I absolutely love the experience and the team is fantastic!Bamilk Lens & Multimedia transformed my business with their amazing content. Highly recommended!"</p>
-            </div>
-    
-            <div class="testimonial">
-                <img src="/images/1725533183312.jpeg" alt="User 2" class="profile-pic">
-                <p class="name">MAdekunle M. </p>
+    <div id="countdown" class="text-3xl font-bold text-yellow-400 mb-6"></div>
 
-           <!--  <p class="role">Developer</p> -->
-                <p class="text">"Their training was a game-changer! I now create professional videos with my phone. " </p>
-            </div>
-    
-            <div class="testimonial">
-                <img src="/images/IMG_9602.jpg" alt="User 3" class="profile-pic">
-                <p class="name">Blessing M </p>
-           <!--  <p class="role">Entrepreneur</p> -->
-                <p class="text">"Fantastic experience! Everything works smoothly, and the customer service is top-notch."</p>
-            </div>
-    
-            <div class="controls">
-                <span class="dot active" onclick="currentSlide(0)"></span>
-                <span class="dot" onclick="currentSlide(1)"></span>
-                <span class="dot" onclick="currentSlide(2)"></span>
-            </div>
-        </div>
-        </div>
-    </div>
-</section>
-
-
-    <!-- WhatsApp Chat Button -->
-    <a href="https://wa.me/2347065950181?text=Hello!%20I%20need%20assistance."
-       target="_blank"
-       class="whatsapp-chat">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-        Chat with us
+    <a href="/register.html"
+       class="bg-yellow-500 hover:bg-yellow-600 px-6 py-3 rounded-lg font-bold shadow-lg">
+       Register Now
     </a>
-     
-    <!-- Contact Section -->
-    <section id="contact">
-        <h2>Get in Touch</h2>
-        <form>
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea placeholder="Your Message" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
-    </section>
 
-    <!-- Footer with Social Media Links -->
-    <footer>
-        <p>&copy;2025 Bamilk Lens & Multimedia. All Rights Reserved.</p>
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
+</section>
+
+<!-- ABOUT -->
+<section class="py-16 px-6 max-w-6xl mx-auto text-center">
+
+    <h2 class="text-3xl font-bold mb-4">Why You Should Attend</h2>
+
+    <p class="text-gray-400 max-w-2xl mx-auto">
+        Learn how to create viral content, monetize your skills, and grow your brand using just your phone.
+    </p>
+
+    <div class="grid md:grid-cols-3 gap-6 mt-10">
+
+        <div class="bg-white/10 p-6 rounded-xl">
+            <h3 class="font-bold text-lg mb-2">Viral Content</h3>
+            <p class="text-gray-300">Learn how to create content that trends</p>
         </div>
-    </footer>
+
+        <div class="bg-white/10 p-6 rounded-xl">
+            <h3 class="font-bold text-lg mb-2">Monetization</h3>
+            <p class="text-gray-300">Turn your content into income</p>
+        </div>
+
+        <div class="bg-white/10 p-6 rounded-xl">
+            <h3 class="font-bold text-lg mb-2">Editing Skills</h3>
+            <p class="text-gray-300">Professional editing techniques</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PRICING -->
+<section class="py-16 bg-gray-900 text-center" id="price">
+
+    <h2 class="text-3xl font-bold mb-10">Ticket Pricing</h2>
+
+    <div class="flex flex-col md:flex-row gap-6 justify-center">
+
+        <div class="bg-white text-black p-6 rounded-xl w-72 shadow-lg">
+            <h3 class="font-bold text-xl mb-2">Early Bird</h3>
+            <p class="text-3xl font-bold">₦60,000</p>
+        </div>
+
+        <div class="bg-yellow-500 text-black p-6 rounded-xl w-72 shadow-lg">
+            <h3 class="font-bold text-xl mb-2">Late Registration</h3>
+            <p class="text-3xl font-bold">₦80,000</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<section class="py-16 px-6 max-w-6xl mx-auto text-center">
+
+    <h2 class="text-3xl font-bold mb-8">Highlights from 1.0 🔥</h2>
+
+    <div class="relative">
+
+        <!-- SLIDER -->
+        <div id="gallerySlider" class="flex transition-transform duration-500">
+
+            <img src="https://res.cloudinary.com/dlvurzdlr/image/upload/v1775439988/Bamilk_content_creation_conference_-137D1P_4979_filtered_zmazyw.jpg" class="w-full flex-shrink-0 rounded-xl">
+            <img src="https://res.cloudinary.com/dlvurzdlr/image/upload/v1775439985/Bamilk_content_creation_conference_-138D1P_4981_filtered_nkrgm6.jpg" class="w-full flex-shrink-0 rounded-xl">
+            <img src="https://res.cloudinary.com/dlvurzdlr/image/upload/v1775439981/Bamilk_content_creation_conference_-85D1P_4526_filtered_kua63d.jpg" class="w-full flex-shrink-0 rounded-xl">
+            <img src="https://res.cloudinary.com/dlvurzdlr/image/upload/v1775439981/Bamilk_content_creation_conference_-108D1P_4750_filtered_yiks9o.jpg" class="w-full flex-shrink-0 rounded-xl">
+             <img src="https://res.cloudinary.com/dlvurzdlr/image/upload/v1775439981/Bamilk_content_creation_conference_-108D1P_4750_filtered_yiks9o.jpg" class="w-full flex-shrink-0 rounded-xl">
+    <img src="https://res.cloudinary.com/dlvurzdlr/image/upload/v1775439980/Bamilk_content_creation_conference_-134D1P_4965_filtered_ss35wz.jpg" class="w-full flex-shrink-0 rounded-xl">
+    <img src="https://res.cloudinary.com/dlvurzdlr/image/upload/v1775439967/Bamilk_content_creation_conference_-21D1P_4194_filtered_cs3zno.jpg" class="w-full flex-shrink-0 rounded-xl">
+    <img src="https://res.cloudinary.com/dlvurzdlr/image/upload/v1775439970/Bamilk_content_creation_conference_-95D1P_4643_filtered_qbcgaj.jpg" class="w-full flex-shrink-0 rounded-xl">
+    <img src="https://res.cloudinary.com/dlvurzdlr/image/upload/v1775439976/Bamilk_content_creation_conference_-62D1P_4409_filtered_av7uzs.jpg" class="w-full flex-shrink-0 rounded-xl">
+    <img src="https://res.cloudinary.com/dlvurzdlr/image/upload/v1775438265/Bamilk_content_creation_conference_-50D1P_4365_filtered_w3lejb.jpg" class="w-full flex-shrink-0 rounded-xl">
+
+
+        </div>
+
+        <!-- BUTTONS -->
+        <button onclick="prevSlide()" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 px-3 py-2 rounded-full">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+
+        <button onclick="nextSlide()" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 px-3 py-2 rounded-full">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+
+    </div>
+
+</section>
+
+
+
+
+<!-- CTA -->
+<section class="py-16 text-center bg-gradient-to-r from-blue-600 to-purple-700">
+
+    <h2 class="text-3xl font-bold mb-4">
+        Secure Your Spot Now
+    </h2>
+
+    <p class="mb-6 text-gray-200">
+        Limited seats available
+    </p>
+
+    <a href="/register.html"
+       class="bg-white text-black px-6 py-3 rounded-lg font-bold">
+       Register Now
+    </a>
+
+</section>
+
+<!-- CONTACT -->
+<section class="py-16 bg-gray-900 px-6">
+
+    <h2 class="text-2xl font-bold text-center mb-6">Contact Us</h2>
+
+    <form id="contactForm" class="max-w-xl mx-auto space-y-4">
+
+        <input type="text" placeholder="Your Name"
+            class="w-full p-3 rounded bg-gray-800 text-white border border-gray-700" required>
+
+        <input type="email" placeholder="Your Email"
+            class="w-full p-3 rounded bg-gray-800 text-white border border-gray-700" required>
+
+        <textarea placeholder="Your Message"
+            class="w-full p-3 rounded bg-gray-800 text-white border border-gray-700" rows="4" required></textarea>
+
+        <button type="submit"
+            class="w-full bg-blue-500 hover:bg-blue-600 p-3 rounded font-bold">
+            Send Message
+        </button>
+
+    </form>
+
+   <div class="mt-10 flex flex-col items-center gap-4">
+
+    <!-- CALL -->
+    <a href="tel:+2347065950181"
+       class="flex items-center gap-3 bg-white/10 px-5 py-3 rounded-xl hover:bg-white/20 transition">
+        <i class="fas fa-phone text-green-400 text-xl"></i>
+        <span class="font-semibold">+234 706 595 0181</span>
+    </a>
+
+    <a href="tel:+2348032597076"
+       class="flex items-center gap-3 bg-white/10 px-5 py-3 rounded-xl hover:bg-white/20 transition">
+        <i class="fas fa-phone text-green-400 text-xl"></i>
+        <span class="font-semibold">+234 803 259 7076</span>
+    </a>
+
+    <!-- WHATSAPP -->
+    <a href="https://wa.me/2347065950181"
+       class="flex items-center gap-3 bg-green-500 px-5 py-3 rounded-xl hover:bg-green-600 transition font-bold">
+        <i class="fab fa-whatsapp text-xl"></i>
+        Chat on WhatsApp
+    </a>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer class="text-center py-6 text-gray-400 bg-black">
+  <div class="flex justify-center gap-6 mt-10 text-2xl">
+
+    <a href="#" class="hover:text-blue-500">
+        <i class="fab fa-facebook"></i>
+    </a>
+
+    <a href="#" class="hover:text-pink-500">
+        <i class="fab fa-instagram"></i>
+    </a>
+
+    <a href="#" class="hover:text-black">
+        <i class="fab fa-tiktok"></i>
+    </a>
+
+    <a href="#" class="hover:text-blue-400">
+        <i class="fab fa-twitter"></i>
+    </a>
+
+    <a href="https://wa.me/2347065950181" class="hover:text-green-500">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+</div>
+    © 2026 BamilkLens
+</footer>
+
+<script>
+
+let index = 0;
+const slider = document.getElementById("gallerySlider");
+const totalSlides = slider.children.length;
+
+function showSlide(i) {
+    slider.style.transform = `translateX(-${i * 100}%)`;
+}
+
+function nextSlide() {
+    index = (index + 1) % totalSlides;
+    showSlide(index);
+}
+
+function prevSlide() {
+    index = (index - 1 + totalSlides) % totalSlides;
+    showSlide(index);
+}
+
+// AUTO SLIDE
+setInterval(() => {
+    nextSlide();
+}, 4000);
+
+// COUNTDOWN
+const countdown = document.getElementById("countdown");
+
+const eventDate = new Date("June 16, 2026 00:00:00").getTime();
+
+setInterval(() => {
+    const now = new Date().getTime();
+    const distance = eventDate - now;
+
+    const d = Math.floor(distance / (1000*60*60*24));
+    const h = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
+    const m = Math.floor((distance % (1000*60*60))/(1000*60));
+    const s = Math.floor((distance % (1000*60))/1000);
+
+    countdown.innerHTML = `${d}d ${h}h ${m}m ${s}s`;
+}, 1000);
+
+</script>
+
 </body>
 </html>

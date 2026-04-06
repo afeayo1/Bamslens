@@ -1,144 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Complete Payment</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .bg-image {
-            background: url('/images/070c8525-78ba-4c3e-8618-6ff7f7d86240.jpg') no-repeat center center/cover;
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complete Payment - BamilkLens</title>
 
-        .overlay {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: -1;
-        }
+<script src="https://cdn.tailwindcss.com"></script>
 
-        .copy-btn {
-            cursor: pointer;
-            color: #fff;
-            background-color: #007bff;
-            border-radius: 4px;
-            padding: 5px 10px;
-            font-size: 0.9rem;
-            transition: 0.3s ease;
-        }
+<style>
+    body { font-family: 'Inter', sans-serif; }
 
-        .copy-btn:hover {
-            background-color: #0056b3;
-        }
+    .bg-image {
+        background: url('https://res.cloudinary.com/dlvurzdlr/image/upload/v1775438265/Bamilk_content_creation_conference_-50D1P_4365_filtered_w3lejb.jpg') no-repeat center center/cover;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        z-index: -2;
+    }
 
-        .hidden {
-            display: none;
-        }
-    </style>
+    .overlay {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: rgba(10, 20, 40, 0.8);
+        z-index: -1;
+    }
+
+    .loader {
+        border: 3px solid rgba(255,255,255,0.3);
+        border-top: 3px solid white;
+        border-radius: 50%;
+        width: 18px;
+        height: 18px;
+        animation: spin 1s linear infinite;
+        display: none;
+        margin-left: 10px;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+</style>
 </head>
-<body class="flex items-center justify-center min-h-screen bg-gray-900">
 
-    <div class="bg-image"></div> <!-- Background Image -->
-    <div class="overlay"></div> <!-- Dark Overlay -->
+<body class="flex items-center justify-center min-h-screen px-4">
 
-    <div class="w-full max-w-lg bg-white p-6 rounded-lg shadow-lg">
-        <h2 class="text-xl font-bold text-center text-gray-700">Complete Your Payment</h2>
-        <p class="text-center text-gray-500 text-sm mt-2">Choose your preferred payment method below:</p>
+<div class="bg-image"></div>
+<div class="overlay"></div>
 
-        <!-- Paystack Payment -->
-        <form id="paymentForm" class="mt-4">
-            <button id="payButton" type="submit" 
-                class="w-full flex items-center justify-center bg-blue-500 text-white p-3 rounded hover:bg-blue-600 transition relative">
-                <span id="buttonText">Pay with Paystack (₦50,000)</span>
-                <span id="spinner" class="hidden ml-2">
-                    <svg class="animate-spin h-5 w-5 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 0116 0H4z"></path>
-                    </svg>
-                </span>
-            </button>
-        </form>
+<div class="w-full max-w-lg backdrop-blur-xl bg-white/10 border border-white/20 p-6 rounded-2xl shadow-2xl text-white">
 
-        <div class="mt-6 border-t pt-4">
-            <h3 class="text-lg font-semibold text-gray-700 text-center">Or Pay via Bank Transfer</h3>
-            <div class="mt-3 text-center">
-                <p class="text-gray-600 text-lg font-semibold">Bamilklens and Multimedia</p>
-                <p class="text-gray-800 text-lg font-bold">Fidelity Bank</p>
-                <div class="flex items-center justify-center space-x-2 mt-1">
-                    <span id="accountNumber" class="text-gray-700 text-lg font-medium">5601410787</span>
-                    <button class="copy-btn" onclick="copyAccount()">Copy</button>
-                </div>
-            </div>
-
-            <p class="text-center text-gray-600 text-sm mt-4">
-                After making the payment, please send proof of payment via WhatsApp to:
-                <a href="https://wa.me/2347065950181" target="_blank" class="text-green-500 font-semibold">
-                    07065950181
-                </a>
-            </p>
-        </div>
-
-        <p id="message" class="text-center text-red-500 mt-4"></p>
+    <!-- HEADER -->
+    <div class="text-center mb-6">
+        <h1 class="text-2xl font-bold">Complete Your Payment</h1>
+        <p class="text-gray-300 text-sm mt-1">Secure your spot at the conference</p>
     </div>
 
-    <script>
-        document.getElementById("paymentForm").addEventListener("submit", async (e) => {
-            e.preventDefault();
+    <!-- PAYSTACK -->
+    <button id="payButton"
+        class="w-full flex items-center justify-center bg-blue-500 hover:bg-blue-600 p-3 rounded-lg font-semibold shadow-lg transition">
+        <span id="buttonText">Pay with Card (₦60,000)</span>
+        <div class="loader" id="spinner"></div>
+    </button>
 
-            const payButton = document.getElementById("payButton");
-            const buttonText = document.getElementById("buttonText");
-            const spinner = document.getElementById("spinner");
+    <!-- DIVIDER -->
+    <div class="flex items-center my-6">
+        <div class="flex-1 h-px bg-white/30"></div>
+        <span class="px-3 text-sm text-gray-300">OR</span>
+        <div class="flex-1 h-px bg-white/30"></div>
+    </div>
 
-            // Disable button and show loading spinner
-            payButton.disabled = true;
-            buttonText.textContent = "Processing...";
-            spinner.classList.remove("hidden");
+    <!-- BANK TRANSFER CARD -->
+    <div class="bg-white/10 border border-white/20 rounded-xl p-4">
 
-            const email = localStorage.getItem("email");
+        <h3 class="text-lg font-semibold text-center mb-3">Bank Transfer</h3>
 
-            try {
-                const response = await fetch("http://vx33eu1m54wsq5jmeedimetm.199.192.25.147.sslip.io/register/pay", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ email })
-                });
+        <div class="text-center space-y-1">
+            <p class="text-sm text-gray-300">Account Name</p>
+            <p class="font-semibold">Bamilklens and Multimedia</p>
 
-                const data = await response.json();
+            <p class="text-sm text-gray-300 mt-2">Bank</p>
+            <p class="font-semibold">Fidelity Bank</p>
 
-                if (response.ok) {
-                    window.location.href = data.paymentLink; // Redirect to Paystack
-                } else {
-                    document.getElementById("message").innerText = data.message;
-                    resetButton();
-                }
-            } catch (error) {
-                document.getElementById("message").innerText = "An error occurred. Please try again.";
-                resetButton();
-            }
+            <p class="text-sm text-gray-300 mt-2">Account Number</p>
+
+            <div class="flex justify-center items-center gap-2">
+                <span id="accountNumber" class="text-lg font-bold">5601410787</span>
+                <button onclick="copyAccount()" class="text-xs bg-blue-500 px-2 py-1 rounded">Copy</button>
+            </div>
+        </div>
+
+        <!-- COPY SUCCESS -->
+        <p id="copyMsg" class="text-green-400 text-center text-xs mt-2 hidden">Copied!</p>
+
+      <button id="paidBtn"
+    class="w-full mt-4 flex items-center justify-center bg-green-500 hover:bg-green-600 p-3 rounded-lg font-semibold">
+
+    <span id="paidText">I HAVE PAID</span>
+
+    <div id="paidLoader" class="loader"></div>
+</button>
+
+    </div>
+
+    <!-- MESSAGE -->
+    <p id="message" class="text-center text-red-400 mt-4 text-sm"></p>
+
+    <!-- MODAL -->
+<div id="paymentModal" class="fixed inset-0 bg-black/70 flex items-center justify-center hidden z-50">
+
+    <div class="bg-white text-black p-6 rounded-xl max-w-sm w-full text-center">
+
+        <h2 class="text-xl font-bold mb-2">Upload Receipt</h2>
+
+        <p class="text-sm text-gray-600 mb-4">
+            Click below to send your payment receipt via WhatsApp for confirmation.
+        </p>
+
+        <a id="whatsappLink" target="_blank"
+            class="block w-full bg-green-500 text-white p-3 rounded-lg font-semibold mb-3">
+            Send Receipt on WhatsApp
+        </a>
+
+        <button onclick="closeModal()"
+            class="w-full bg-gray-200 p-2 rounded">
+            Close
+        </button>
+
+    </div>
+
+</div>
+
+</div>
+
+<script>
+// PAYSTACK
+document.getElementById("payButton").addEventListener("click", async () => {
+    const btn = document.getElementById("payButton");
+    const text = document.getElementById("buttonText");
+    const spinner = document.getElementById("spinner");
+
+    btn.disabled = true;
+    text.innerText = "Processing...";
+    spinner.style.display = "inline-block";
+
+    const email = localStorage.getItem("email");
+
+    try {
+        const res = await fetch("https://vx33eu1m54wsq5jmeedimetm.199.192.25.147.sslip.io/register/pay", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({ email })
         });
 
-        function resetButton() {
-            const payButton = document.getElementById("payButton");
-            const buttonText = document.getElementById("buttonText");
-            const spinner = document.getElementById("spinner");
+        const data = await res.json();
 
-            payButton.disabled = false;
-            buttonText.textContent = "Pay with Paystack (₦50,000)";
-            spinner.classList.add("hidden");
+        if (res.ok) {
+            window.location.href = data.paymentLink;
+        } else {
+            document.getElementById("message").innerText = data.message;
         }
 
-        function copyAccount() {
-            const accountNumber = document.getElementById("accountNumber").innerText;
-            navigator.clipboard.writeText(accountNumber).then(() => {
-                alert("Account number copied to clipboard!");
-            });
+    } catch (err) {
+        document.getElementById("message").innerText = "Network error";
+    }
+
+    btn.disabled = false;
+    text.innerText = "Pay with Card (₦50,000)";
+    spinner.style.display = "none";
+});
+
+// COPY
+function copyAccount() {
+    const acc = document.getElementById("accountNumber").innerText;
+    navigator.clipboard.writeText(acc);
+
+    const msg = document.getElementById("copyMsg");
+    msg.classList.remove("hidden");
+
+    setTimeout(() => msg.classList.add("hidden"), 2000);
+}
+
+// I HAVE PAID → WHATSAPP
+document.getElementById("paidBtn").addEventListener("click", async () => {
+
+    const btn = document.getElementById("paidBtn");
+    const text = document.getElementById("paidText");
+    const loader = document.getElementById("paidLoader");
+
+    const email = localStorage.getItem("email");
+
+    // UI LOADING
+    btn.disabled = true;
+    text.innerText = "Processing...";
+    loader.style.display = "inline-block";
+
+    try {
+        const res = await fetch("https://vx33eu1m54wsq5jmeedimetm.199.192.25.147.sslip.io/register/confirm-transfer", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({ email })
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+
+            // ✅ PREPARE WHATSAPP LINK
+            const phone = "2347065950181";
+            const message = encodeURIComponent(
+                `Hello, I just made payment for BamilkLens Conference.\n\nEmail: ${email}\n\nI am sending my receipt now.`
+            );
+
+            const link = `https://wa.me/${phone}?text=${message}`;
+
+            document.getElementById("whatsappLink").href = link;
+
+            // ✅ SHOW MODAL
+            document.getElementById("paymentModal").classList.remove("hidden");
+
+        } else {
+            document.getElementById("message").innerText = data.message;
         }
-    </script>
+
+    } catch (err) {
+        document.getElementById("message").innerText = "Network error";
+    }
+
+    // RESET BUTTON
+    btn.disabled = false;
+    text.innerText = "I HAVE PAID";
+    loader.style.display = "none";
+});
+
+function closeModal() {
+    document.getElementById("paymentModal").classList.add("hidden");
+}
+
+</script>
 
 </body>
 </html>
